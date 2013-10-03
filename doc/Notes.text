@@ -1,0 +1,25 @@
+
+Functionality:
+--------------
+1)Views for following activities:
+   a)creating new tasks
+   b)displaying tasks in a list
+   c)displaying tasks in a calender
+   d)displaying task in a matrix
+   e)archieved tasks
+
+2)Syncing the task list across the devices
+
+3)Responsive view
+
+4)Good Unit and E2E test coverage
+
+5)Intuitive, neat and clean UI
+
+6)Having a local copy of the list and syncing the list using a background job.May be push the updates from server.
+
+
+
+
+
+

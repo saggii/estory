@@ -1,0 +1,43 @@
+<!document html>
+<html ng-app="estory">
+<head>
+    <title>ExpressStory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="../css/select2.css">
+    <script src="../js/external/underscore-min.js"></script>
+    <script src="../js/external/jquery-1.8.3.min.js"></script>
+    <script src="../js/external/angular.js"></script>
+    <script src="../js/external/angular-select2.js"></script>
+    <script src="../js/external/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../js/external/bootstrap.min.js"></script>
+    <script src="../js/external/jquery.isotope.js"></script>
+    <script type="text/javascript" src="../js/app/modules.js"></script>
+    <script type="text/javascript" src="../js/app/services.js"></script>
+</head>
+
+<body ng-controller="estoryMainController">
+
+<div id="container">
+    <div class="item note" ng-repeat="news in newsList">
+        <img ng-src="{{news.imgSrc}}" width="200px" height="200px" >
+        <label>{{news.title}}</label>
+    </div>
+    <div>
+        <label style="visibility: hidden">Express Story</label>
+    </div>
+</div>
+</body>
+</body>
+<script>
+    $(function(){
+        var $container = $('#container');
+        $container.isotope({
+            itemSelector : '.item',
+            layoutMode : 'fitRows'
+        });
+    });
+</script>
+
+</html>

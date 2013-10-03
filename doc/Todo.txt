@@ -1,0 +1,11 @@
+
+1)List Of Locations
+2)List Of Projects
+3)List Of Builders
+4)Price Range
+
+
+
+construct service in such a way that it returns location filtered on location,e.g
+/pune/aundh
+then remove filtering logic in getData funtion in js
