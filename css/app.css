@@ -81,5 +81,18 @@ ul li{
     margin: 15px;
     font-size: 14px;
     font-weight: bold;
-    
+
+}
+
+.isotope-item {
+    z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.addPostContainer{
+    margin: 2%;
 }

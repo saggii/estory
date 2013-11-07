@@ -1,0 +1,36 @@
+<script>
+    tinymce.init({
+        selector: "textarea#elm1",
+        theme: "modern",
+        width: 760,
+        height: 300,
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        content_css: "css/content.css",
+        toolbar: "insertfile undo redo |bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media | forecolor backcolor",
+        removed_menuitems: 'newdocument',
+        style_formats: [
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'},
+            {title: 'Table styles'},
+            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        ]
+    });
+</script>
+<div class="addPostContainer">
+<form method="post">
+    <label>Title</label>
+    <textarea class="field span10" rows="2" ng-model="title" placeholder="Title"></textarea>
+    <label>Content</label>
+    <textarea id="elm1" name="area"></textarea>
+    <br>
+    <button ng-click="publish()">Publish</button>
+</form>
+</div>
+

@@ -38,7 +38,7 @@ serviceModule.factory('newsListService',function(){
             var newsdata = new Array();
             console.log('Getting projects....');
             $.ajax({
-                url: 'http://198.46.152.24:8889/rest/data/news',
+                url: 'http://localhost:8009/feed/date/20131103',
                 type: 'get',
                 dataType: 'json',
                 async: false,

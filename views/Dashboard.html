@@ -1,0 +1,21 @@
+<div id="container">
+    <div class="item note" ng-repeat="news in newsList">
+        <img ng-src="{{news.imgSrc}}" width="200px" height="200px" >
+        <label>{{news.title}}</label>
+    </div>
+    <div>
+        <label style="visibility: hidden">Express Story</label>
+    </div>
+</div>
+</body>
+</body>
+<script>
+    $(function(){
+        var $container = $('#container');
+        $container.isotope({
+            //filter: '.metal',
+            itemSelector : '.item',
+            layoutMode : 'fitRows'
+        });
+    });
+</script>
