@@ -93,6 +93,6 @@ ul li{
     z-index: 1;
 }
 
-.addPostContainer{
+.addPostContainer,.previewContainer{
     margin: 2%;
 }

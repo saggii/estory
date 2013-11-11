@@ -59,30 +59,18 @@ serviceModule.factory('newsListService',function(){
 
 });
 
-serviceModule.factory('poiService',function(){
-    console.log('In poiService');
-    var poiList ={
-        getPoiData:function(locationName){
-            var poiData = new Array();
-            $.ajax({
-                url: 'http://198.46.152.24:8888/rest/data/school',
-                type: 'get',
-                dataType: 'json',
-                async: false,
-                success: function(data) {
-                    poiData = data;
-                    console.log('schoolData::'+poiData);
-                    return poiData;
-                },
-                error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log('errorThrown::'+errorThrown);
-                    return errorThrown;
-                }
-            });
-            return poiData;
+serviceModule.factory('draftService',function(){
+    console.log('In draftService');
+    var draftArray = new Object();
+    var drafts ={
+        getDraft:function(draftName){
+            return draftArray[draftName];
+        },
+        setDraft:function(draftName,contents){
+            draftArray[draftName] = contents;
         }
     }
-    return poiList;
+    return drafts;
 });
 
 

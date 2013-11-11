@@ -1,36 +1,51 @@
-<script>
-    tinymce.init({
-        selector: "textarea#elm1",
-        theme: "modern",
-        width: 760,
-        height: 300,
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste"
-        ],
-        content_css: "css/content.css",
-        toolbar: "insertfile undo redo |bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media | forecolor backcolor",
-        removed_menuitems: 'newdocument',
-        style_formats: [
-            {title: 'Bold text', inline: 'b'},
-            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-            {title: 'Example 1', inline: 'span', classes: 'example1'},
-            {title: 'Example 2', inline: 'span', classes: 'example2'},
-            {title: 'Table styles'},
-            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-        ]
-    });
+<script type="text/javascript">
+    CKEDITOR.disableAutoInline = true;
+    /*$( document ).ready( function() {
+        $( 'textarea#contentEditor').ckeditor();
+    } );*/
+    CKEDITOR.replace( 'contentEditor',
+            {
+                toolbar : 'MyToolbar',
+                filebrowserUploadUrl : 'http://localhost:8009/feed/fileupload'
+
+            });
+    CKEDITOR.editorConfig = function( config )
+    {
+        config.extraPlugins = 'timestamp,restfileupload';
+
+        /*config.toolbar = 'MyToolbar';
+
+        config.toolbar_MyToolbar =
+                [
+                    { name: 'document', items : [ 'NewPage','Preview' ] },
+                    { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+                    { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
+                    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'
+                        ,'Iframe','timestamp' ] },
+                    '/',
+                    { name: 'styles', items : [ 'Styles','Format' ] },
+                    { name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
+                    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
+                    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                    { name: 'tools', items : [ 'Maximize','-','About' ] }
+                ];*/
+
+    };
+
 </script>
 <div class="addPostContainer">
 <form method="post">
     <label>Title</label>
     <textarea class="field span10" rows="2" ng-model="title" placeholder="Title"></textarea>
     <label>Content</label>
-    <textarea id="elm1" name="area"></textarea>
+    <textarea class="ckeditor" rows="10" cols="40" id="contentEditor" name="contentEditor"></textarea>
     <br>
-    <button ng-click="publish()">Publish</button>
 </form>
+<form target="frame" name="uploadImages" action="http://localhost:8009/feed/fileupload" method="POST" enctype="multipart/form-data">
+    <input type="file" id="files"  multiple/>
+    <iframe hidden="true" name="frame"></iframe>
+</form>
+    <button class="btn-primary btn-large" ng-click="preview()">Preview</button>
 </div>
+
 
