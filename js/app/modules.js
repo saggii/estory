@@ -53,7 +53,7 @@ var addPostController = function($scope,$location,newsListService,draftService) 
     }
 }
 
-var previewController = function($scope,$location,newsListService,draftService) {
+var previewController = function($scope,$location,newsListService,draftService,publishStory) {
     console.log('preview .. ');
     var feed = draftService.getDraft("D123");
 
@@ -63,6 +63,8 @@ var previewController = function($scope,$location,newsListService,draftService) 
     $scope.description= feed.description;
 
     $scope.publish = function(){
+        console.log('Publishing..');
+        publishStory.publish(feed);
     }
     }
 }
@@ -72,7 +74,7 @@ var previewController = function($scope,$location,newsListService,draftService) 
     this.title=title;
     this.description = description;
     this.sourceId = 'eStory';
-    this.publishedDate='20131107';
+    this.publishedDate='20131111';
     this.section='general';
     this.link='';
     this.uri='';

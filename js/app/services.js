@@ -38,10 +38,13 @@ serviceModule.factory('newsListService',function(){
             var newsdata = new Array();
             console.log('Getting projects....');
             $.ajax({
-                url: 'http://localhost:8009/feed/date/20131103',
+                url: 'http://localhost:8009/feed/date/20131111',
                 type: 'get',
                 dataType: 'json',
                 async: false,
+                beforeSend: function( xhr ) {
+                    xhr.setRequestHeader('X-Requested-With', {toString: function(){ return ''; }});
+                },
                 success: function(data) {
                     console.log('projectData::'+data);
                     newsdata=data;
@@ -73,5 +76,34 @@ serviceModule.factory('draftService',function(){
     return drafts;
 });
 
+serviceModule.factory('publishStory',function(){
+    console.log('Publishing..');
+    var publishService ={
+        publish:function(feed){
+            var response;
+            console.log('calling service....');
+            $.ajax({
+                url: 'http://localhost:8009/feed/internal/save',
+                type: 'POST',
+                data: JSON.stringify(feed),
+                dataType: 'json',
+                contentType: "application/json",
+                async: false,
+                success: function(data) {
+                    console.log('projectData::'+data);
+                    response=data;
+                    return data;
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('errorThrown::'+errorThrown);
+                    return errorThrown;
+                }
+            });
+            return response;
+        }
+    }
+    return publishService;
+
+});
 
 
