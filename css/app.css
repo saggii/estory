@@ -2,11 +2,6 @@ ul li{
     list-style-type: none;
 }
 
-#container {
-    position: relative;
-    display: inline;
-}
-
 #searchPanel{
     background-color: #e0f5e0;
     width: 20%;
@@ -16,12 +11,6 @@ ul li{
     display: inline-block;
     float: left;
 
-}
-
-#mapContainer {
-    width: 80%;
-    float: right;
-    display: inline-block;
 }
 
 .selectbox{
@@ -96,3 +85,4 @@ ul li{
 .addPostContainer,.previewContainer{
     margin: 2%;
 }
+

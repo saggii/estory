@@ -23,9 +23,9 @@ mentorApplicationModule.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-var mainController = function($scope,$location,newsListService) {
+var mainController = function($scope,$location,tempList) {
     console.log('Express Story Started .. ');
-    var data =newsListService.getNewsData();
+    var data =tempList.getData();
     console.log('data '+data);
     $scope.newsList=data;
 }

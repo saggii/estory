@@ -6,28 +6,39 @@
  * To change this template use File | Settings | File Templates.
  */
 
-serviceModule.factory('locationList',function(){
-    var locationsArray = [{"name":"Aundh"},
-                          {"name":"Karve Nagar"},
-                          {"name":"Hadapsar"},
-                          {"name":"Chinchwad"},
-                          {"name":"Kothrud"},
-                          {"name":"Magarpatta"},
-                          {"name":"Baner"},
-                          {"name":"Hinjewadi"},
-                          {"name":"Katraj"},
-                          {"name":"Wakad"},
-                          {"name":"Khardi"},
-                          {"name":"PCMC"},
-                          {"name":"Kumthekar Road"}
-                        ];
+serviceModule.factory('tempList',function(){
+    var tempNewsArray = [
+    						{
+    						"title":"Test1",
+    						"pubDate":"",
+    						"imgSrc":""
+    						},
+    						{
+    						"title":"Test2",
+    						"pubDate":"",
+    						"imgSrc":""
+    						},
+    						,
+    						{
+    						"title":"Test3",
+    						"pubDate":"",
+    						"imgSrc":""
+    						},
+    						,
+    						{
+    						"title":"Test4",
+    						"pubDate":"",
+    						"imgSrc":""
+    						}
+    						
+                   ];
 
-    var locations =  {
+    var tempNews =  {
         getData:function(){
-            return locationsArray;
+            return tempNewsArray;
         }
     }
-    return locations;
+    return tempNews;
 });
 
 
