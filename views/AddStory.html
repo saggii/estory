@@ -1,51 +1,15 @@
-<script type="text/javascript">
-    CKEDITOR.disableAutoInline = true;
-    /*$( document ).ready( function() {
-        $( 'textarea#contentEditor').ckeditor();
-    } );*/
-    CKEDITOR.replace( 'contentEditor',
-            {
-                toolbar : 'MyToolbar',
-                filebrowserUploadUrl : 'http://localhost:8009/feed/fileupload',
-                height: 500,
-                width: 1000
-
-            });
-    CKEDITOR.editorConfig = function( config )
-    {
-        config.extraPlugins = 'timestamp,restfileupload';
-
-        /*config.toolbar = 'MyToolbar';
-
-        config.toolbar_MyToolbar =
-                [
-                    { name: 'document', items : [ 'NewPage','Preview' ] },
-                    { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-                    { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
-                    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'
-                        ,'Iframe','timestamp' ] },
-                    '/',
-                    { name: 'styles', items : [ 'Styles','Format' ] },
-                    { name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
-                    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
-                    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
-                    { name: 'tools', items : [ 'Maximize','-','About' ] }
-                ];*/
-
-    };
-
-</script>
 <div class="addPostContainer">
 <form method="post">
-    <label>Title</label>
     <textarea class="field span10" rows="2" ng-model="title" placeholder="Title"></textarea>
-    <label>Content</label>
-    <textarea class="ckeditor" rows="10" cols="40" id="contentEditor" name="contentEditor"></textarea>
+    <textarea class="ckeditor" rows="10" cols="40" id="contentEditor" placeholder="content" name="contentEditor"></textarea>
     <br>
-</form>
-<form target="frame" name="uploadImages" action="http://localhost:8009/feed/fileupload" method="POST" enctype="multipart/form-data">
-    <input type="file" id="files"  multiple/>
-    <iframe hidden="true" name="frame"></iframe>
+    <div>
+        <select ui-select2 class="selectbox"  multiple  ng-model="SelectedSection" data-placeholder="Pick Section">
+            <option ng-repeat="section in sections" value="{{section.name}}">
+                {{section.name}}
+            </option>
+        </select>
+    </div>
 </form>
     <button class="btn-primary btn-large" ng-click="preview()">Preview</button>
 </div>

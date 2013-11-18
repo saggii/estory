@@ -8,45 +8,51 @@
  CKEDITOR.plugins.add('restfileupload', {
     icons:'insertImage',
     init:function (editor) {
-        editor.addCommand('insertImageDialog',new CKEDITOR.dialogCommand( 'insertImageDialog' ) );
+        editor.addCommand('imageR',new CKEDITOR.dialogCommand( 'imageR' ) );
         editor.ui.addButton('insertImage', {
             label:'Insert Rest Image',
-            command:'insertImageDialog',
+            command:'imageR',
             toolbar:'insert'
         });
 
-        CKEDITOR.dialog.add( 'insertImageDialog',function (editor){
+        var ref = CKEDITOR.tools.addFunction( function(fileURL,message) {
+            console.log( fileURL);
+            var element = new CKEDITOR.dom.element.createFromHtml('<img src="'+fileURL+'"/>');
+            editor.insertElement(element);
+        } );
+        CKEDITOR.dialog.add( 'imageR',function (editor){
             return {
                 title: 'Insert Image',
                 minWidth: 400,
                 minHeight: 200,
                 contents: [
                 {
-                    id: 'tab-basic',
+                    id: 'info',
                     label: 'Basic Settings',
                     elements: [
-                    {
-                        type: 'file',
-                        id: 'upload',
-                        label: 'Select file from your computer'
-                   },
-				{
-    				type: 'fileButton',
-    				label: 'Upload',
-    				id: 'uploadButton',
-    				'for': [ 'tab-basic', 'upload' ]
-				}
+                        {
+                            type: 'file',
+                            id: 'upload',
+                            action:'http://localhost/ExpressStory/upload.php?CKEditor=contentEditor&CKEditorFuncNum='+ref,
+                            label: 'Select file from your computer',
+                            size: 38
+                        },
+                        {
+                            type: 'fileButton',
+                            id: 'fileId',
+                            label: 'Upload file',
+                            'for': [ 'info', 'upload' ],
+                            filebrowser: {
+                                onSelect: function( fileUrl, data ) {
+                                    console.log('fileUrl'+fileUrl);
+
+
+                                }
+                            }
+                        }
          ]
 }
-],
-onOk: function(){
-    var dialog = this;
-    var imageLocation = editor.document.createElement( 'img' );
-    console.log(dialog.getValueOf( 'tab-basic', 'upload' ));
-    imageLocation.setAttribute( 'src', dialog.getValueOf( 'tab-basic', 'upload' ) );
-    imageLocation.setText( dialog.getValueOf( 'tab-basic', 'upload' ));
-    editor.insertElement(imageLocation);
-}
+]
 };
 });
 

@@ -42,6 +42,8 @@ serviceModule.factory('tempList',function(){
 });
 
 
+
+
 serviceModule.factory('newsListService',function(){
     console.log('In news list  service');
     var newsList ={
@@ -49,7 +51,7 @@ serviceModule.factory('newsListService',function(){
             var newsdata = new Array();
             console.log('Getting projects....');
             $.ajax({
-                url: 'http://localhost:8009/feed/date/20131111',
+                url: 'http://localhost:8009/feed/date/20131103',
                 type: 'get',
                 dataType: 'json',
                 async: false,

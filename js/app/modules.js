@@ -12,7 +12,15 @@ var directiveModule = angular.module('directives', []);
 
 var filterModule = angular.module('filters', []);
 
-var mentorApplicationModule = angular.module('estory', ['services', 'directives', 'filters']);
+var mentorApplicationModule = angular.module('estory', ['services', 'directives', 'filters','ui.select2']);
+
+var SectionArray = [
+    {"name":"General"},
+    {"name":"Politics"},
+    {"name":"Technology"},
+    {"name":"Entertainment"},
+    {"name":"Religion"}
+];
 
 mentorApplicationModule.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
@@ -23,9 +31,9 @@ mentorApplicationModule.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-var mainController = function($scope,$location,tempList) {
+var mainController = function($scope,$location,newsListService) {
     console.log('Express Story Started .. ');
-    var data =tempList.getData();
+    var data =newsListService.getNewsData();
     console.log('data '+data);
     $scope.newsList=data;
 }
@@ -34,6 +42,16 @@ var mainController = function($scope,$location,tempList) {
 var addPostController = function($scope,$location,newsListService,draftService) {
     console.log('estoryAddPostController .. ');
 
+    CKEDITOR.replace( 'contentEditor',
+        {
+            toolbar : 'Basic',
+            extraPlugins:'timestamp,restfileupload',
+            filebrowserUploadUrl : 'http://localhost:8009/feed/fileupload',
+            height: 500,
+            width: 1000
+
+        });
+    $scope.sections=SectionArray;
     $scope.preview = function(){
         console.log('publish ');
 
@@ -74,7 +92,7 @@ var previewController = function($scope,$location,newsListService,draftService,p
     this.title=title;
     this.description = description;
     this.sourceId = 'eStory';
-    this.publishedDate='20131111';
+    this.publishedDate='20131117';
     this.section='general';
     this.link='';
     this.uri='';
