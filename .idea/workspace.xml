@@ -20,10 +20,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="-3.5833333">
+            <state line="12" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="0.1295938">
               <folding />
             </state>
           </provider>
@@ -32,34 +32,16 @@
       <file leaf-file-name="Dashboard.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/Dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="46" selection-start="188" selection-end="193" vertical-scroll-proportion="-1.875">
+            <state line="2" column="50" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modules.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="modules.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app/modules.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="24" selection-start="3122" selection-end="3128" vertical-scroll-proportion="2.517857">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/upload.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="117" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Preview.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/Preview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="28" selection-start="29" selection-end="29" vertical-scroll-proportion="-0.625">
+            <state line="111" column="17" selection-start="3307" selection-end="3310" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,7 +50,7 @@
       <file leaf-file-name="AddStory.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/AddStory.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="50" selection-start="447" selection-end="455" vertical-scroll-proportion="-4.375">
+            <state line="4" column="71" selection-start="211" selection-end="226" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -102,18 +84,18 @@
         <option value="$PROJECT_DIR$/../upload.php" />
         <option value="$PROJECT_DIR$/js/external/plugins/restfileupload/plugin.js" />
         <option value="$PROJECT_DIR$/upload.php" />
-        <option value="$PROJECT_DIR$/views/Dashboard.html" />
         <option value="$PROJECT_DIR$/js/app/services.js" />
         <option value="$PROJECT_DIR$/views/index.html" />
         <option value="$PROJECT_DIR$/views/AddStory.html" />
         <option value="$PROJECT_DIR$/js/app/modules.js" />
+        <option value="$PROJECT_DIR$/views/Dashboard.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1600" />
-    <option name="height" value="708" />
+    <option name="width" value="1280" />
+    <option name="height" value="689" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -184,8 +166,8 @@
     <property name="options.lastSelected" value="preferences.lookFeel" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Realtor" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -227,13 +209,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1600" height="708" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1280" height="689" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17074743" sideWeight="0.9954058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1737013" sideWeight="0.9954058" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -304,9 +286,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/views/isotope.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/external/contents.css">
@@ -318,39 +298,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../upload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="9" selection-start="738" selection-end="743" vertical-scroll-proportion="0.4856115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/plugins_filebrowser_plugin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-12.409462">
-          <folding />
-        </state>
+        <state line="18" column="9" selection-start="738" selection-end="743" vertical-scroll-proportion="0.4856115" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/external/plugins/image/dialogs/image.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/Preview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="28" selection-start="29" selection-end="29" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/external/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/external/plugins/timestamp/plugin.js">
@@ -362,14 +320,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/external/plugins/restfileupload/plugin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="1" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.0">
+        <state line="54" column="1" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/external/select2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/Dashboard.html">
+    <entry file="file://$PROJECT_DIR$/views/Preview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="46" selection-start="188" selection-end="193" vertical-scroll-proportion="-1.875">
+        <state line="1" column="28" selection-start="29" selection-end="29" vertical-scroll-proportion="0.029013539">
           <folding />
         </state>
       </provider>
@@ -381,37 +349,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/external/select2.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="-3.5833333">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/AddStory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="50" selection-start="447" selection-end="455" vertical-scroll-proportion="-4.375">
+        <state line="4" column="71" selection-start="211" selection-end="226" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/modules.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="24" selection-start="3122" selection-end="3128" vertical-scroll-proportion="2.517857">
+        <state line="111" column="17" selection-start="3307" selection-end="3310" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/Dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="50" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="0.1295938">
           <folding />
         </state>
       </provider>

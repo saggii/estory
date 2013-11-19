@@ -53,20 +53,11 @@ var addPostController = function($scope,$location,newsListService,draftService) 
         });
     $scope.sections=SectionArray;
     $scope.preview = function(){
-        console.log('publish ');
-
         var value = CKEDITOR.instances['contentEditor'].getData();
-        console.debug('val:'+value);
         var title = $scope.title;
-        console.log('title: '+title);
-        $('form[name="uploadImages"]').submit();
-        var images = new Array();
-        var imageNames = document.getElementById('files');
-        for (var i = 0; i < imageNames.files.length; ++i) {
-            images.push(imageNames.files.item(i).name);
-        }
-        console.log(new feed(title,value,images));
-        draftService.setDraft("D123",new feed(title,value,images));
+        var section = $scope.selectedSection;
+        console.log(new feed(title,value,section));
+        draftService.setDraft("D123",new feed(title,value,section));
         $location.path('/preview')
     }
 }
@@ -76,7 +67,7 @@ var previewController = function($scope,$location,newsListService,draftService,p
     var feed = draftService.getDraft("D123");
 
     if(feed!=undefined){
-    console.log('feed .. '+feed.author);
+    console.log('feed author.. '+feed.author);
     $scope.title= feed.title;
     $scope.description= feed.description;
 
@@ -87,16 +78,51 @@ var previewController = function($scope,$location,newsListService,draftService,p
     }
 }
 
-  function feed (title,description,images){
+  function feed (title,description,section){
     this.userId = 'chinmay';
     this.title=title;
     this.description = description;
     this.sourceId = 'eStory';
-    this.publishedDate='20131117';
-    this.section='general';
+    this.publishedDate=getCurrentDate();
+    this.section=section;
     this.link='';
     this.uri='';
     this.author='chinmay';
     this.feedURL='chinmay';
-    this.images = images;
+    this.image = getImageObject(description);
+}
+
+function getCurrentDate(){
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth();
+    curr_month++;
+    var curr_year = d.getFullYear();
+    return curr_year+''+curr_month+''+curr_date;
+
+}
+
+
+function getImageObject(htmlString){
+    var image = new Object();
+    var htmlContent = $(htmlString);
+    var imageElement = htmlContent.find("img").get(0);
+    console.debug('imageElement:'+imageElement);
+    if(imageElement){
+        image.src=$(imageElement).attr('src');
+        var dimension=getImageDimensions(image.src);
+        image.width=dimension.width;
+        image.height=dimension.height;
+    }
+    return image;
+}
+
+function getImageDimensions(imgElementSrc){
+var dimension = new Object;
+var t = new Image();
+t.src = imgElementSrc;
+dimension.width= t.width;
+dimension.height = t.height;
+console.log('dimension:'+JSON.stringify(dimension));
+return dimension;
 }
