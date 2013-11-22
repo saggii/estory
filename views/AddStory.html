@@ -1,12 +1,18 @@
 <div class="addPostContainer">
 <form method="post">
     <div>
-    <textarea class="field span10" rows="1" ng-model="title" placeholder="Title"></textarea>
+
+        <select ui-select2 class="selectbox"  ng-model="selectedCategory" data-placeholder="Pick Section">
+            <option ng-repeat="category in catagories" value="{{category.name}}">
+                {{category.name}}
+            </option>
+        </select>
         <select ui-select2 class="selectbox"  ng-model="selectedSection" data-placeholder="Pick Section">
             <option ng-repeat="section in sections" value="{{section.name}}">
                 {{section.name}}
             </option>
-        </select>
+        </select><br/><br/>
+        <textarea class="field span10" rows="1" ng-model="title" placeholder="Title"></textarea><br/>
     </div>
     <textarea class="ckeditor" rows="10" cols="40" id="contentEditor" placeholder="content" name="contentEditor"></textarea>
     <br>

@@ -14,12 +14,20 @@ var filterModule = angular.module('filters', []);
 
 var mentorApplicationModule = angular.module('estory', ['services', 'directives', 'filters','ui.select2']);
 
-var SectionArray = [
+var CategoryArray = [
     {"name":"General"},
     {"name":"Politics"},
     {"name":"Technology"},
     {"name":"Entertainment"},
     {"name":"Religion"}
+];
+
+var SectionArray = [
+    {"name":"General"},
+    {"name":"Editorial"},
+    {"name":"KnowYourCandidate"},
+    {"name":"SpeakingTree"},
+    {"name":"TodayInHistory"}
 ];
 
 mentorApplicationModule.config(['$routeProvider', function ($routeProvider) {
@@ -51,13 +59,15 @@ var addPostController = function($scope,$location,newsListService,draftService) 
             width: 1000
 
         });
+    $scope.catagories=CategoryArray;
     $scope.sections=SectionArray;
     $scope.preview = function(){
         var value = CKEDITOR.instances['contentEditor'].getData();
         var title = $scope.title;
+        var category = $scope.selectedCategory;
         var section = $scope.selectedSection;
-        console.log(new feed(title,value,section));
-        draftService.setDraft("D123",new feed(title,value,section));
+        console.log(new feed(title,value,category,section));
+        draftService.setDraft("D123",new feed(title,value,category,section));
         $location.path('/preview')
     }
 }
@@ -78,12 +88,13 @@ var previewController = function($scope,$location,newsListService,draftService,p
     }
 }
 
-  function feed (title,description,section){
+  function feed (title,description,category,section){
     this.userId = 'chinmay';
     this.title=title;
     this.description = description;
     this.sourceId = 'eStory';
     this.publishedDate=getCurrentDate();
+    this.category=category;
     this.section=section;
     this.link='';
     this.uri='';

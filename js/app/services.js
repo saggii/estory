@@ -51,7 +51,8 @@ serviceModule.factory('newsListService',function(){
             var newsdata = new Array();
             console.log('Getting projects....');
             $.ajax({
-                url: 'http://localhost:8009/feed/date/20131103',
+                //url: 'http://localhost:8009/feed/date/20131103',
+                url:'http://localhost/ExpressStory/NewsResponse.json',
                 type: 'get',
                 dataType: 'json',
                 async: false,
