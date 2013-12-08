@@ -1,30 +1,42 @@
-<div id="container">
-    <div class="item note" ng-repeat="news in newsList">
-        <img ng-src="{{news.image.src}}" width="150px" height="150px" >
-        <label class="storyLabel">{{news.title}}</label>
+<div class="container-fluid outerContainer">
+    <ul id="container" class="thumbnails isotope">
+        <li class="span4 {{news.category}}" ng-repeat="news in newsList">
+            <div class="thumbnail" ng-switch="news.Style">
+                <a style="color: inherit;" ng-click="openFeed(news.publishedDate,news.category,news.section,news.sourceId,news.feedId)"><h4
+                        class="storyLabel">{{news.title}}</h4></a>
+
+                <div ng-switch-when="true">
+                    <img ng-src="{{news.image.src}}" width="150px" height="150px">
+                </div>
+                <p>{{news.shortDescription}}</p>
+            </div>
+        </li>
+    </ul>
+    <div id="hotNews">
+        <h4 style="text-align: center;background: #706C6E;color: #ffffff">Trending</h4>
+        <ul  class="">
+            <li class="hotListItem" ng-repeat="news in newsList">
+                <a>{{news.title}}</a>
+            </li>
+        </ul>
     </div>
 </div>
+
+
 <script src="../js/external/jquery-1.8.3.min.js"></script>
 <script src="../js/external/jquery.isotope.js"></script>
-  <script>
-    $(function(){
-      
-      var $container = $('#container');
-      
-     /*$('#container').isotope({
-  		masonryHorizontal: {
-    	rowHeight: 360
-  		}
-	 });*/
-
-    $('#container').isotope({
-      masonryHorizontal: {
-      rowHeight: 460
-      }
-      });
+<script>
+    $(function () {
+        var $container = $('#container');
+        $('#container').isotope({
+            animationEngine:'css'
+        });
+        $('.btn').click(function () {
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter:selector, animationEngine:'css' });
+            return false;
+        });
     });
 
 
-  </script>
-  
-
+</script>

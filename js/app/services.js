@@ -1,71 +1,29 @@
 /**
- * Created with JetBrains WebStorm.
- * User: saychinu
+ * User: chinmay sagade
  * Date: 6/5/13
  * Time: 3:50 AM
- * To change this template use File | Settings | File Templates.
  */
 
-serviceModule.factory('tempList',function(){
-    var tempNewsArray = [
-    						{
-    						"title":"Test1",
-    						"pubDate":"",
-    						"imgSrc":""
-    						},
-    						{
-    						"title":"Test2",
-    						"pubDate":"",
-    						"imgSrc":""
-    						},
-    						,
-    						{
-    						"title":"Test3",
-    						"pubDate":"",
-    						"imgSrc":""
-    						},
-    						,
-    						{
-    						"title":"Test4",
-    						"pubDate":"",
-    						"imgSrc":""
-    						}
-    						
-                   ];
-
-    var tempNews =  {
-        getData:function(){
-            return tempNewsArray;
-        }
-    }
-    return tempNews;
-});
-
-
-
-
 serviceModule.factory('newsListService',function(){
-    console.log('In news list  service');
+
     var newsList ={
         getNewsData:function(){
             var newsdata = new Array();
-            console.log('Getting projects....');
             $.ajax({
                 //url: 'http://localhost:8009/feed/date/20131103',
-                url:'http://localhost/ExpressStory/NewsResponse.json',
+                url:'http://localhost/ExpressStory/Response.json',
                 type: 'get',
                 dataType: 'json',
                 async: false,
                 beforeSend: function( xhr ) {
                     xhr.setRequestHeader('X-Requested-With', {toString: function(){ return ''; }});
+                    xhr.setRequestHeader('X-Requested-Service', 'testing');
                 },
                 success: function(data) {
-                    console.log('projectData::'+data);
                     newsdata=data;
                     return data;
                 },
                 error : function(XMLHttpRequest, textStatus, errorThrown) {
-                console.log('errorThrown::'+errorThrown);
                 return errorThrown;
                }
             });
@@ -77,7 +35,6 @@ serviceModule.factory('newsListService',function(){
 });
 
 serviceModule.factory('draftService',function(){
-    console.log('In draftService');
     var draftArray = new Object();
     var drafts ={
         getDraft:function(draftName){
@@ -91,25 +48,22 @@ serviceModule.factory('draftService',function(){
 });
 
 serviceModule.factory('publishStory',function(){
-    console.log('Publishing..');
     var publishService ={
         publish:function(feed){
             var response;
-            console.log('calling service....');
             $.ajax({
-                url: 'http://localhost:8009/feed/internal/save',
+                //url: 'http://localhost:8009/feed/internal/save',
+                url: 'http://localhost/ExpressStory/EStoryServices.php?service=publishStory',
                 type: 'POST',
                 data: JSON.stringify(feed),
                 dataType: 'json',
                 contentType: "application/json",
                 async: false,
                 success: function(data) {
-                    console.log('projectData::'+data);
                     response=data;
                     return data;
                 },
                 error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log('errorThrown::'+errorThrown);
                     return errorThrown;
                 }
             });
@@ -118,6 +72,52 @@ serviceModule.factory('publishStory',function(){
     }
     return publishService;
 
+});
+
+serviceModule.factory('getStoryItem',function(){
+    var getFeedService ={
+        fetch:function(pubDate,category,section,sourceId,feedId){
+            var response;
+            $.ajax({
+                url: 'http://localhost:8009/feed/'+pubDate+'/'+category+'/'+section+'/'+sourceId+'/'+feedId,
+                type: 'GET',
+                data: JSON.stringify(feed),
+                dataType: 'json',
+                contentType: "application/json",
+                async: false,
+                success: function(data) {
+                    response=data;
+                    return data;
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                    return errorThrown;
+                }
+            });
+            return response;
+        }
+    }
+    return getFeedService;
+
+});
+
+serviceModule.factory('userInfoService',function(){
+    var userDetails = new Object();
+    userDetails.getUserInfo=function(){
+        var userDetails=angular.fromJson(sessionStorage.userService);
+        if(userDetails==undefined){
+            userDetails = new Object();
+            userDetails.isUserLoggedIn=false;
+            return userDetails;
+        }
+        return userDetails;
+    };
+    userDetails.setUserInfo=function(user){
+        userDetails = new Object();
+        userDetails.isUserLoggedIn = true;
+        userDetails.userInfo=user;
+        sessionStorage.userService=angular.toJson(userDetails);
+    };
+    return userDetails;
 });
 
 

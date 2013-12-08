@@ -1,0 +1,47 @@
+<div id="container">
+
+    <div class="note {{news.category}}" ng-repeat="news in newsList" ng-switch="news.Style" >
+        <div class="item">
+            <label class="storyLabel">{{news.title}}</label>
+            <div ng-switch-when="true">
+                <img ng-src="{{news.image.src}}"  width="150px" height="150px">
+            </div>
+            <p>{{news.shortDescription}}</p>
+        </div>
+    </div>
+
+</div>
+<script src="../js/external/jquery-1.8.3.min.js"></script>
+<script src="../js/external/jquery.isotope.js"></script>
+<script>
+    $(function(){
+
+        var $container = $('#container');
+
+        /*$('#container').isotope({
+         masonryHorizontal: {
+         rowHeight: 360
+         }
+         });*/
+
+        $('#container').isotope({
+            masonryHorizontal: {
+                columnWidth: 240
+            },
+            onLayout: function( $elems, instance ) {
+                console.log( this.height() );
+
+            }
+        });
+
+        $('.btn').click(function(){
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector });
+            return false;
+        });
+    });
+
+
+</script>
+  
+

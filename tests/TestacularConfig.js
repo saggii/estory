@@ -2,7 +2,6 @@ basePath = '..';
 
 files = [
     'js/external/angular.min.js',
-    'js/external/underscore-min.js',
     'js/external/angular-*.js',
     JASMINE,
     JASMINE_ADAPTER,
