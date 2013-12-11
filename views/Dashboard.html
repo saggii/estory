@@ -1,8 +1,14 @@
+<div>
+    <div class="well well-large" >
+        <p ng-bind-html="feedTitle"></p>
+        <p ng-bind-html="feedDescription"></p>
+    </div>
+</div>
 <div class="container-fluid outerContainer">
     <ul id="container" class="thumbnails isotope">
         <li class="span4 {{news.category}}" ng-repeat="news in newsList">
             <div class="thumbnail" ng-switch="news.Style">
-                <a style="color: inherit;" ng-click="openFeed(news.publishedDate,news.category,news.section,news.sourceId,news.feedId)"><h4
+                <a style="color: inherit;" ng-click="openFeed(news.publishedDate,news.category.name,'GENERAL',news.sourceId,news.feedId)"><h4
                         class="storyLabel">{{news.title}}</h4></a>
 
                 <div ng-switch-when="true">

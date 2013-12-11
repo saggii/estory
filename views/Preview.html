@@ -1,6 +1,6 @@
 
 <div class="previewContainer" id="previewContainer">
     <label ng-model="title">{{title}}</label>
-    <div ng-bind-html-unsafe="description"></div>
+    <div ng-bind-html="description"></div>
     <button class="btn-primary btn-large" ng-click="publish()">Publish</button>
 </div>

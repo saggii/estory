@@ -48,15 +48,19 @@ foreach ( $_SERVER as $key => $value ) {
 	}
 }
 
-// identify request method, url and params
+
 $request_method = $_SERVER['REQUEST_METHOD'];
+
 $request_params = ( $request_method == 'GET' ) ? $_GET : $_POST;
+
 // Get URL from `csurl` in GET or POST data, before falling back to X-Proxy-URL header.
 //$request_url = urldecode( isset( $_REQUEST['csurl'] ) ? $_REQUEST['csurl'] : $_SERVER['HTTP_X_PROXY_URL'] );
+
 $service = isset( $_REQUEST['service'] ) ? $_REQUEST['service'] : $_SERVER['X-Requested-Service'];
 
 if($service == 'newsListService'){
-$request_url = 'http://localhost/ExpressStory/Response.json';
+//$request_url = 'http://localhost/ExpressStory/Response.json';
+$request_url = 'http://localhost:8009/feed/';
 }
 else if($service == 'getStoryItem')
 {
@@ -66,8 +70,11 @@ else if($service == 'publishStory')
 {
 $request_url = 'http://localhost:8009/feed/internal/save';
 }
+
 $p_request_url = parse_url( $request_url );
+
 unset( $request_params['csurl'] );
+unset( $request_params['service'] );
 
 // ignore requests for proxy :)
 if ( preg_match( '!' . $_SERVER['SCRIPT_NAME'] . '!', $request_url ) || empty( $request_url ) || count( $p_request_url ) == 1 ) {
@@ -100,24 +107,30 @@ if ( CSAJAX_FILTERS ) {
 
 // append query string for GET requests
 if ( $request_method == 'GET' && count( $request_params ) > 0 && (!array_key_exists( 'query', $p_request_url ) || empty( $p_request_url['query'] ) ) ) {
-	$request_url .= '?' . http_build_query( $request_params );
+	$path = $request_params['path'];
+	$request_url .= $path;
 }
 
-//print($request_headers );
-// let the request begin
-$ch = curl_init( $request_url );
-curl_setopt( $ch, CURLOPT_HTTPHEADER, $request_headers );   // (re-)send headers
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );	 // return response
-curl_setopt( $ch, CURLOPT_HEADER, true );	   // enabled response headers
-// add post data for POST requests
+$ch = curl_init();
+
 if ( $request_method == 'POST' ) {
-	curl_setopt( $ch, CURLOPT_POST, true );
-	curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $request_params ) );
+	$request_body = file_get_contents('php://input');
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/json"));
+	curl_setopt( $ch, CURLOPT_POSTFIELDS, $request_body);
+}else{
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+	curl_setopt( $ch, CURLOPT_HEADER, true );
+	$request_url=urldecode($request_url);
 }
 
-// retrieve response (headers and content)
-$response = curl_exec( $ch );
-curl_close( $ch );
+curl_setopt($ch, CURLOPT_URL, $request_url);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+//print($request_url);
+
+$response=curl_exec($ch);
+//print($response);
 
 // split response to header and content
 list($response_headers, $response_content) = preg_split( '/(\r\n){2}/', $response, 2 );
@@ -131,11 +144,11 @@ foreach ( $response_headers as $key => $response_header ) {
 		$response_header = 'Location: ' . $_SERVER['REQUEST_URI'] . '?csurl=' . $value;
 	}
 	if ( !preg_match( '/^(Transfer-Encoding):/', $response_header ) ) {
-		header( $response_header, false );
+		//header( $response_header, false );
 	}
 }
 
-// finally, output the content
+//output the contents
 print($response_content );
 
 function csajax_debug_message( $message )

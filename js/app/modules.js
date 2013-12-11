@@ -16,15 +16,17 @@ var filterModule = angular.module('filters', []);
 var mentorApplicationModule = angular.module('estory', ['ngRoute','services', 'directives', 'filters','ui.select2','ui.bootstrap']);
 
 var CategoryArray = [
-    {"name":"General"},
-    {"name":"Politics"},
-    {"name":"Technology"},
-    {"name":"Entertainment"},
-    {"name":"Religion"}
+    {"name":"GENERAL"},
+    {"name":"POLITICS"},
+    {"name":"SPORTS"},
+    {"name":"ECONOMY"},
+    {"name":"TECHNOLOGY"},
+    {"name":"ENTERTAINMENT"},
+    {"name":"RELIGION"}
 ];
 
 var SectionArray = [
-    {"name":"General"},
+    {"name":"GENERAL"},
     {"name":"Editorial"},
     {"name":"KnowYourCandidate"},
     {"name":"SpeakingTree"},
@@ -41,18 +43,22 @@ mentorApplicationModule.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-var mainController = function($scope,$location,newsListService,getStoryItem) {
+var mainController = function($scope,$location,$sce,newsListService,getStoryItem) {
 
     var data =newsListService.getNewsData();
-
+    $scope.isCollapsed = false;
     $scope.newsList=transformNewsData(data);
+    var feedTitle = "";
+
 
     $scope.openFeed=function (pubDate,category,section,sourceId,feedId){
         var feedData = getStoryItem.fetch(pubDate,category,section,sourceId,feedId);
-        return feedData;
+        console.log(feedData.title);
+        $scope.feedTitle = $sce.trustAsHtml(feedData.title);
+        $scope.feedDescription = $sce.trustAsHtml(feedData.description);
     }
 
-
+    //$scope.feedTitle=$sce.trustAsHtml(feedTitle);
 }
 
 var displayNewsController = function($scope) {
@@ -67,7 +73,6 @@ var addPostController = function($scope,$location,newsListService,draftService) 
         {
             toolbar : 'Basic',
             extraPlugins:'timestamp,restfileupload',
-            filebrowserUploadUrl : 'http://localhost:8009/feed/fileupload',
             height: 500,
             width: 1000
 
@@ -79,6 +84,7 @@ var addPostController = function($scope,$location,newsListService,draftService) 
 
     $scope.preview = function(){
         var value = CKEDITOR.instances['contentEditor'].getData();
+        console.log(value);
         var title = $scope.title;
         var category = $scope.selectedCategory;
         var section = $scope.selectedSection;
@@ -121,7 +127,7 @@ var userController = function($scope,$location,$modal,$rootScope,userInfoService
         console.log('currentUser Changed in root scope ');
         user = userInfoService.getUserInfo();
         if(user!=undefined){
-                
+
                 $scope.isUserLoggedIn = true;
                 $scope.user=user.userInfo;
                 $route.reload();
@@ -204,13 +210,14 @@ var loginController = function($scope,$route,$rootScope,userInfoService,$locatio
     }
 }
 
-var previewController = function($scope,$location,newsListService,draftService,publishStory) {
+var previewController = function($scope,$sce,$location,newsListService,draftService,publishStory) {
 
     var feed = draftService.getDraft("D123");
 
     if(feed!=undefined){
     $scope.title= feed.title;
-    $scope.description= feed.description;
+        console.log(feed.description);
+    $scope.description= $sce.trustAsHtml(feed.description);
 
     $scope.publish = function(){
         publishStory.publish(feed);
@@ -236,6 +243,7 @@ var previewController = function($scope,$location,newsListService,draftService,p
     this.author='chinmay';
     this.feedURL='chinmay';
     this.image = getImageObject(description);
+
 }
 
 

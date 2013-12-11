@@ -21,14 +21,15 @@
     <script type="text/javascript" src="../js/app/services.js"></script>
 </head>
 
-<body class="bodyStyle">
+<body class="bodyStyle" ng-controller="mainController">
 <div class="navbar navbar-inverse" ng-controller="userController">
     <div class="navbar-inner">
         <ul class="nav">
             <li class="active"><a href="#">Express Story</a></li>
             <li><a href="#/add">Add Story</a></li>
+            <li><a href="#menu"><img ng-click="isCollapsed = !isCollapsed" src="../resources/images/icon-png2x.png"></a></li>
         </ul>
-        <ul class="nav">
+        <ul class="nav" style="float: right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-switch="isUserLoggedIn">
                     <span ng-switch-when="false">
@@ -47,6 +48,13 @@
                         <b class="caret"></b>
                     </span>
                 </a>
+                <form class="navbar-form navbar-left" role="filters">
+                    <button class="btn" data-filter="*">All</button>
+                    <button class="btn" data-filter=".General">General</button>
+                    <button class="btn" data-filter=".Entertainment">Entertainment</button>
+                    <button class="btn" data-filter=".Sports">Sports</button>
+                </form>
+
                 <ul class="dropdown-menu">
                     <li class="active">
                         <a ng-click="open()">Login</a>
@@ -97,7 +105,11 @@
             </a>
         </div>
     </script>
+
+
 </div>
+
+
 
 
 <div ng-view></div>

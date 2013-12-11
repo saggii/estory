@@ -11,7 +11,7 @@ serviceModule.factory('newsListService',function(){
             var newsdata = new Array();
             $.ajax({
                 //url: 'http://localhost:8009/feed/date/20131103',
-                url:'http://localhost/ExpressStory/Response.json',
+                url:'http://localhost/ExpressStory/EStoryServices.php?service=newsListService&path=date/20131211',
                 type: 'get',
                 dataType: 'json',
                 async: false,
@@ -38,9 +38,12 @@ serviceModule.factory('draftService',function(){
     var draftArray = new Object();
     var drafts ={
         getDraft:function(draftName){
+            console.log('returning contents');
+            console.log(draftArray[draftName]);
             return draftArray[draftName];
         },
         setDraft:function(draftName,contents){
+            console.log(contents);
             draftArray[draftName] = contents;
         }
     }
@@ -77,13 +80,16 @@ serviceModule.factory('publishStory',function(){
 serviceModule.factory('getStoryItem',function(){
     var getFeedService ={
         fetch:function(pubDate,category,section,sourceId,feedId){
+            console.log('category:'+category);
+            console.log('section:'+section);
             var response;
             $.ajax({
-                url: 'http://localhost:8009/feed/'+pubDate+'/'+category+'/'+section+'/'+sourceId+'/'+feedId,
+                //url: 'http://localhost:8009/feed/'+pubDate+'/'+category+'/'+section+'/'+sourceId+'/'+feedId,
+                url: 'http://localhost/ExpressStory/EStoryServices.php?service=getStoryItem&path='+pubDate+'/'+category+'/'+section+'/'+sourceId+'/'+feedId,
                 type: 'GET',
                 data: JSON.stringify(feed),
                 dataType: 'json',
-                contentType: "application/json",
+                //contentType: "application/json",
                 async: false,
                 success: function(data) {
                     response=data;
